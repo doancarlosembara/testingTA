@@ -2418,14 +2418,14 @@
     "src": "resources/js/Pages/Calendar/CalendarItems.vue"
   },
   "resources/js/Pages/Dashboard.css": {
-    "file": "assets/Dashboard-23cc3f64.css",
+    "file": "assets/Dashboard-387dd020.css",
     "src": "resources/js/Pages/Dashboard.css"
   },
   "resources/js/Pages/Dashboard.vue": {
     "css": [
-      "assets/Dashboard-23cc3f64.css"
+      "assets/Dashboard-387dd020.css"
     ],
-    "file": "assets/Dashboard-74dd6dcc.js",
+    "file": "assets/Dashboard-c539be12.js",
     "imports": [
       "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue",
       "resources/js/Pages/Profile/Edit.vue",

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employee_shifts', function (Blueprint $table) {
+        Schema::create('kantor', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id')->constrained()->onDelete('cascade');
-            $table->foreignId('shift_id')->nullable()->constrained()->onDelete('set null');
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
+            $table->string('nama');
+            $table->string('alamat');
+            $table->float('koordinat_x');
+            $table->float('koordinat_y');
+            $table->float('radius');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employee_shifts');
+        Schema::dropIfExists('kantor');
     }
 };

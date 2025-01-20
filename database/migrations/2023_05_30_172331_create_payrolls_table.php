@@ -13,17 +13,21 @@ return new class extends Migration
     {
         Schema::create('payrolls', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id')->constrained()->onDelete('cascade');
-            $table->string('currency');
-            $table->decimal('base', 10, 2)->default(0);
-            $table->decimal('performance_multiplier', 10, 2)->default(0);
-            $table->decimal('total_additions', 10, 2)->default(0);
-            $table->decimal('total_deductions', 10, 2)->default(0);
-            $table->decimal('total_payable', 10, 2)->default(0); // Maybe not needed
-            $table->date('due_date');
-            $table->boolean('is_reviewed')->default(false); // True: Paid, False: Pending
+            $table->foreignId('id_karyawan')->constrained()->onDelete('cascade');
+            $table->date('tanggal_payroll');
+            $table->decimal('gaji_pokok', 7, 2)->default(0);
+            $table->decimal('upah_lembur', 5, 2)->default(0);
+            $table->decimal('gaji_tgl_merah', 5, 2)->default(0);
+            $table->decimal('upah_lembur_tgl_merah', 5, 2)->default(0);
+            $table->decimal('bpjs_kes_perusahaan', 5, 2)->default(0);
+            $table->decimal('bpjs_jkk_perusahaan', 5, 2)->default(0);
+            $table->decimal('bpjs_jht_perusahaan', 5, 2)->default(0);
+            $table->decimal('bpjs_jkm_perusahaan', 5, 2)->default(0);
+            $table->decimal('bpjs_jp_perusahaan', 5, 2)->default(0);
+            $table->decimal('bpjs_kes_karyawan', 5, 2)->default(0);
+            $table->boolean('is_reviewed')->default(false);
             $table->boolean('status')->default(false); // True: Paid, False: Pending
-            $table->unique(['employee_id', 'due_date']);
+            $table->unique(['id_karyawan', 'tanggal_payroll']);
             $table->timestamps();
         });
     }

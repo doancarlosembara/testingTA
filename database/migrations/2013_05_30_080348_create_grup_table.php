@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('calendars', function (Blueprint $table) {
+        Schema::create('grup', function (Blueprint $table) {
             $table->id();
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
-            $table->string('title');
-            $table->enum('type', ['holiday', 'meeting', 'event', 'other']);
+            $table->foreignId('id_departemen')->nullable()->constrained('departemen')->onDelete('set null');
+            $table->string('nama');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('calendars');
+        Schema::dropIfExists('grup');
     }
 };

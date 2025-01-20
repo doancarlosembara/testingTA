@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('tunjangan', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('id_payroll')->unique()->constrained()->onDelete('cascade');
+            $table->string('nama');
+            $table->decimal('nominal', 6, 2);
+            $table->boolean('status')->default(false); // True: Processed, False: Drafted
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('tunjangan');
     }
 };
