@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tunjangan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_payroll')->unique()->constrained()->onDelete('cascade');
+            $table->foreignId('id_payroll')->unique()->constrained('payroll')->onDelete('cascade');
             $table->string('nama');
             $table->decimal('nominal', 6, 2);
             $table->boolean('status')->default(false); // True: Processed, False: Drafted
