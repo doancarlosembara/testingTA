@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('distribusi_pengumuman', function (Blueprint $table) {
-            $table->id_pengumuman()->constrained('pengumuman')->onDelete('cascade');
-            $table->id_departemen()->constrained('departemen')->onDelete('cascade');
-            $table->unique(['id_pengumuman', 'id_departemen']);
+            $table->foreignId('id_pengumuman')->constrained('pengumuman')->onDelete('cascade');
+            $table->foreignId('id_departemen')->constrained('departemen')->onDelete('cascade');
             $table->timestamps();
         });
     }

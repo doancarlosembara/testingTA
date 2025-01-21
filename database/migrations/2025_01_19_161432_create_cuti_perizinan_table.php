@@ -17,10 +17,10 @@ return new class extends Migration
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->string('keterangan');
-            $table->enum('jenis', ['izin', 'alpa', 'sakit']);
-            $table->enum('status_pengajuan', ['diajukan', 'disetujui', 'ditolak']);
+            $table->enum('jenis', ['izin', 'alpa', 'sakit'])->default('alpa');
+            $table->enum('status_pengajuan', ['diajukan', 'disetujui', 'ditolak'])->default('diajukan');
             $table->foreignId('disetujui_oleh')->nullable()->constrained('karyawan')->onDelete('set null');
-            $table->blob('surat_izin')->nullable();
+            $table->string('surat_izin')->nullable();
             $table->timestamps();
         });
     }

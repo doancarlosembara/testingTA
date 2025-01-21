@@ -21,10 +21,11 @@ return new class extends Migration
             $table->char('npwp', 16)->unique();
             $table->string('password');
             $table->string('no_telepon')->unique();
-            $table->char('jenis_kelamin', 1); // L for male, P for female
+            $table->enum('jenis_kelamin', ['P', 'L'])->default('L'); // L for male, P for female
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->date('tanggal_perekrutan');
+            $table->date('tanggal_pemutusan_kontrak')->nullable();
             $table->string('agama');
             $table->string('alamat');
             $table->string('rt');
@@ -38,6 +39,8 @@ return new class extends Migration
             $table->string('foto_bpjs_ketenagakerjaan')->nullable();
             $table->boolean('is_aktif')->default(true);
             $table->boolean('is_admin')->default(false);
+            $table->boolean('is_archived')->default(false);
+            $table->boolean('is_remote')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

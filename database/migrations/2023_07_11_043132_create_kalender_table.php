@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai')->nullable();
             $table->string('judul');
-            $table->enum('tipe', ['hari_libur', 'meeting', 'acara', 'lainnya']);
+            $table->enum('tipe', ['hari_libur', 'meeting', 'acara', 'lainnya'])->default('hari_libur');
             $table->timestamps();
         });
     }
